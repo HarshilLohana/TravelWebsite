@@ -23,13 +23,15 @@ export default function CorporateTravel() {
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
-            key={currentImage}
+            key={corpHeroImages[currentImage]}
             src={corpHeroImages[currentImage]}
             alt="Corporate travel management solutions by Arabian Amenity Travels"
-            loading="eager"
+            loading={currentImage === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover brightness-75"
+            fetchpriority={currentImage === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+            className="absolute inset-0 w-full h-full object-cover brightness-75 transition-opacity duration-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -107,85 +109,6 @@ export default function CorporateTravel() {
               <p className="text-gray-600 text-sm md:text-base">
                 {item.desc}
               </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* BENEFITS / WHY CHOOSE US */}
-      <section className="py-16 md:py-20 px-6 md:px-16 text-center">
-        <h2 className="text-2xl md:text-4xl font-bold mb-10 text-gray-800">
-          Corporate Travel Simplified
-        </h2>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          {[
-            {
-              icon: "📊",
-              title: "Cost Efficiency",
-              text: "Leveraging preferred partnerships and analytics to bring measurable savings to your travel program.",
-            },
-            {
-              icon: "🌍",
-              title: "Global Reach",
-              text: "With operations covering key business hubs worldwide, we support your travellers across all continents.",
-            },
-            {
-              icon: "👥",
-              title: "Traveller Experience",
-              text: "User-centric booking, mobile tools and proactive communication to ensure your team travels with peace of mind.",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.04 }}
-              className="p-5 md:p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-md"
-            >
-              <div className="text-3xl md:text-4xl mb-4">{item.icon}</div>
-              <h3 className="text-base md:text-lg font-semibold mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 text-sm md:text-base">
-                {item.text}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-16 md:py-20 px-6 md:px-16 bg-gray-100">
-        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 text-gray-800">
-          Trusted by Leading Corporations
-        </h2>
-
-        <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
-          {[
-            {
-              name: "GlobalTech Inc.",
-              feedback:
-                "Arabian Amenity Travels delivered flawless travel management for our annual conference across 5 countries.",
-            },
-            {
-              name: "FinServe Group",
-              feedback:
-                "Their 24/7 team saved our travellers during an unexpected disruption — truly world-class service.",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2, duration: 0.6 }}
-              className="bg-white p-6 md:p-8 rounded-2xl shadow-lg"
-            >
-              <p className="italic text-gray-700 mb-3 md:mb-4 text-sm md:text-base">
-                "{item.feedback}"
-              </p>
-              <h4 className="font-semibold text-gray-900 text-sm md:text-base">
-                {item.name}
-              </h4>
             </motion.div>
           ))}
         </div>

@@ -50,13 +50,15 @@ export default function CruiseBooking() {
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
-            key={currentImage}
+            key={cruiseHeroImages[currentImage]}
             src={cruiseHeroImages[currentImage]}
             alt="Worldwide luxury cruise experiences by Arabian Amenity Travels"
-            loading="eager"
+            loading={currentImage === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover brightness-75"
+            fetchpriority={currentImage === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+            className="absolute inset-0 w-full h-full object-cover brightness-75 transition-opacity duration-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -66,7 +68,6 @@ export default function CruiseBooking() {
 
         {/* Overlay */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-gradient-to-t from-black/70 via-black/40 to-black/20 px-6">
-          {/* SEO H1 (hidden for Google) */}
           <h1 className="sr-only">
             Worldwide Cruise Booking Services by Arabian Amenity Travels
           </h1>
@@ -87,7 +88,7 @@ export default function CruiseBooking() {
             className="text-[clamp(0.95rem,2.5vw,1.2rem)] max-w-3xl text-gray-200"
           >
             Embark on unforgettable journeys across the world’s oceans and rivers with{" "}
-            <span className="font-semibold">Arabian Amenity Travels</span> — your gateway to luxury cruise experiences.
+            <span className="font-semibold">Arabian Amenity Travels</span>.
           </motion.p>
         </div>
       </section>
@@ -165,7 +166,7 @@ export default function CruiseBooking() {
         </motion.h2>
 
         <p className="mb-6 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
-          Whether you dream of the Mediterranean, Caribbean, or Antarctica — Arabian Amenity Travels is your trusted partner in crafting unforgettable global cruise journeys.
+          Whether you dream of the Mediterranean, Caribbean, or Antarctica — Arabian Amenity Travels is your trusted partner.
         </p>
 
         <motion.a

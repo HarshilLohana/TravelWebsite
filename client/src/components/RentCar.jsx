@@ -40,7 +40,7 @@ export default function RentCar() {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % carHeroImages.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(interval);
   }, []);
 
@@ -50,17 +50,19 @@ export default function RentCar() {
       <section className="relative w-full min-h-[65svh] md:min-h-[75vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
-            key={currentImage}
+            key={carHeroImages[currentImage]}
             src={carHeroImages[currentImage]}
             alt="Premium and luxury car rentals in Dubai by Arabian Amenity Travels"
-            loading="eager"
+            loading={currentImage === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover brightness-75"
+            fetchpriority={currentImage === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+            className="absolute inset-0 w-full h-full object-cover brightness-75 transition-opacity duration-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
           />
         </AnimatePresence>
 

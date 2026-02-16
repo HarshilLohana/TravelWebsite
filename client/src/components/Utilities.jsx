@@ -115,11 +115,16 @@ export const TestimonialCarousel = () => {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
+    if (!testimonials || testimonials.length === 0) return;
+
     const interval = setInterval(() => {
       setCurrentReviewIndex(prev => (prev + 1) % testimonials.length);
     }, 6000);
+
     return () => clearInterval(interval);
   }, []);
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   const currentReview = testimonials[currentReviewIndex];
 

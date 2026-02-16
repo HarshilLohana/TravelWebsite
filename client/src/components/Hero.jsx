@@ -8,7 +8,6 @@ const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile once on mount
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -23,7 +22,6 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [totalSlides]);
 
-  // Show video only on desktop
   const isVideo = currentIndex === 0 && !isMobile;
   const currentImageIndex = isVideo ? null : (currentIndex === 0 ? 0 : currentIndex - 1);
 
@@ -51,10 +49,12 @@ const HeroSection = () => {
               key={`hero-img-${currentImageIndex}`}
               src={heroImages[currentImageIndex]}
               alt="Luxury travel destinations with Arabian Amenity Travels"
-              loading="eager"
+              loading={currentIndex === 0 ? "eager" : "lazy"}
+              fetchpriority={currentIndex === 0 ? "high" : "auto"}
               decoding="async"
-              fetchpriority="high"
-              className="absolute inset-0 w-full h-full object-cover"
+              width="1920"
+              height="1080"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -63,7 +63,6 @@ const HeroSection = () => {
           )}
         </AnimatePresence>
 
-        {/* Gradient overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
       </div>
 

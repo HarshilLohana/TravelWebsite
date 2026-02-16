@@ -59,14 +59,16 @@ export default function Reviews() {
             key={carouselImages[current]}
             src={carouselImages[current]}
             alt="Customer Reviews & Testimonials | Arabian Amenity Travels"
-            loading="eager"
+            loading={current === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover"
+            fetchpriority={current === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
           />
         </AnimatePresence>
 
@@ -115,6 +117,8 @@ export default function Reviews() {
                   alt={testimonials[testimonialIndex].name}
                   loading="lazy"
                   decoding="async"
+                  width="112"
+                  height="112"
                   className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-4 border-white shadow-md mb-5 md:mb-6"
                   initial={{ scale: 0.95, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -132,50 +136,6 @@ export default function Reviews() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Review Cards Grid */}
-      <section className="py-16 md:py-24 px-6 md:px-8">
-        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-blue-800">
-          More Happy Travelers
-        </h2>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
-          {[
-            {
-              name: "Raj Mehta",
-              text: "Everything from flight booking to hotel transfers was handled seamlessly. Highly professional team!",
-              stars: 5,
-            },
-            {
-              name: "Lisa Wong",
-              text: "Arabian Amenity Travels made our Europe trip stress-free. Every city was perfectly planned. Loved their support.",
-              stars: 5,
-            },
-            {
-              name: "David Miller",
-              text: "Their 24/7 travel assistance made a big difference when our flight was delayed. Exceptional service!",
-              stars: 4,
-            },
-          ].map((review, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -6, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 180 }}
-              className="bg-white p-5 md:p-8 rounded-3xl shadow-lg border border-gray-100"
-            >
-              <div className="flex justify-center mb-3 md:mb-4 text-yellow-500 text-lg md:text-xl">
-                {"★".repeat(review.stars)}{"☆".repeat(5 - review.stars)}
-              </div>
-              <p className="text-gray-700 italic mb-4 md:mb-6 text-sm md:text-base">
-                “{review.text}”
-              </p>
-              <h3 className="font-semibold text-blue-700 text-sm md:text-base">
-                {review.name}
-              </h3>
-            </motion.div>
-          ))}
         </div>
       </section>
 

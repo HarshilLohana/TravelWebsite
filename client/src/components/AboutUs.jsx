@@ -30,48 +30,49 @@ const AboutUs = () => {
     <div className="font-sans bg-stone-100 text-stone-800 overflow-x-hidden">
       {/* --- HERO CAROUSEL --- */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={carouselImages[current]}
-            src={carouselImages[current]}
-            alt="About Arabian Amenity Travels – Global tours and corporate travel experts"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-          />
-        </AnimatePresence>
+  <AnimatePresence mode="wait">
+    <motion.img
+      key={carouselImages[current]}
+      src={carouselImages[current]}
+      alt="About Arabian Amenity Travels – Global & Corporate Travel Experts"
+      loading={current === 0 ? "eager" : "lazy"}
+      decoding="async"
+      fetchpriority={current === 0 ? "high" : "auto"}
+      width="1920"
+      height="1080"
+      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+    />
+  </AnimatePresence>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/45 to-black/25 flex flex-col items-center justify-center text-center px-6">
-          {/* SEO H1 (hidden) */}
-          <h1 className="sr-only">
-            About Arabian Amenity Travels – Global & Corporate Travel Experts
-          </h1>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/45 to-black/25 flex flex-col items-center justify-center text-center px-6">
+    <h1 className="sr-only">
+      About Arabian Amenity Travels – Global & Corporate Travel Experts
+    </h1>
 
-          <motion.h2
-            className="text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold text-white drop-shadow-2xl mb-3 tracking-wide"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            About Us
-          </motion.h2>
+    <motion.h2
+      className="text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold text-white drop-shadow-2xl mb-3 tracking-wide"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.6 }}
+    >
+      About Us
+    </motion.h2>
 
-          <motion.p
-            className="text-[clamp(0.95rem,2.5vw,1.2rem)] text-white/85 max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            Redefining corporate and luxury travel experiences across the globe.
-          </motion.p>
-        </div>
-      </section>
+    <motion.p
+      className="text-[clamp(0.95rem,2.5vw,1.2rem)] text-white/85 max-w-2xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.6 }}
+    >
+      Redefining corporate and luxury travel experiences across the globe.
+    </motion.p>
+  </div>
+</section>
 
       {/* --- ABOUT SECTION --- */}
       <section className="container mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">

@@ -66,14 +66,16 @@ const Services = () => {
             key={carouselImages[current]}
             src={carouselImages[current]}
             alt="Arabian Amenity Travels services including corporate travel and luxury holidays"
-            loading="eager"
+            loading={current === 0 ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority="high"
-            className="absolute inset-0 w-full h-full object-cover"
+            fetchpriority={current === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
           />
         </AnimatePresence>
 
