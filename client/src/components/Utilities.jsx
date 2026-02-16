@@ -1,95 +1,93 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Users, MapPin, Award, UserCircle, Compass, Star, Globe } from "lucide-react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { testimonials } from '../data/constants.js';
 
-// Define a map of icon names to Lucide React components
 const IconMap = {
-    Award: Award,
-    Users: Users,
-    MapPin: MapPin,
-    Compass: Compass, // Added
-    Star: Star,     // Added
-    Globe: Globe    // Added
+  Award,
+  Users,
+  MapPin,
+  Compass,
+  Star,
+  Globe
 };
 
-// --- AnimatedCounter Component ---
+// --- AnimatedCounter ---
 export const AnimatedCounter = ({ countTo, title, iconName, suffix = "" }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.4 });
 
   const IconComponent = IconMap[iconName];
 
   useEffect(() => {
-    if (isInView) {
-      const duration = 1500;
-      const startTime = Date.now();
-      
-      const animateCount = () => {
-        const now = Date.now();
-        const progress = Math.min((now - startTime) / duration, 1);
-        const animatedValue = Math.floor(progress * countTo);
-        setCount(animatedValue);
+    if (!isInView) return;
 
-        if (progress < 1) {
-          requestAnimationFrame(animateCount);
-        }
-      };
-      requestAnimationFrame(animateCount);
-    }
+    const duration = 1200;
+    const start = performance.now();
+
+    const animate = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setCount(Math.floor(progress * countTo));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   }, [isInView, countTo]);
 
   return (
-    <div ref={ref} className="bg-white p-8 rounded-2xl shadow-xl flex flex-col items-center">
-      {/* Icon uses the IconMap for dynamic rendering and has blue color */}
-      {IconComponent && <IconComponent size={36} className="text-blue-600 mx-auto mb-2" />}
-      <h3 className="text-4xl sm:text-5xl font-extrabold text-blue-600 mt-2">{count}{suffix}</h3>
-      <p className="mt-2 text-lg font-semibold text-gray-600">{title}</p>
+    <div ref={ref} className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl flex flex-col items-center">
+      {IconComponent && <IconComponent size={32} className="text-blue-600 mb-2" />}
+      <h3 className="text-[clamp(1.6rem,5vw,3rem)] font-extrabold text-blue-600">
+        {count}{suffix}
+      </h3>
+      <p className="mt-1 text-sm sm:text-lg font-semibold text-gray-600 text-center">
+        {title}
+      </p>
     </div>
   );
 };
 
-// --- WhyUsItem Component ---
+// --- WhyUsItem ---
 export const WhyUsItem = ({ item }) => {
   const IconComponent = IconMap[item.iconName];
 
   return (
     <motion.div 
-      key={item.id} 
-      whileHover={{ scale: 1.05 }} 
-      className="bg-white rounded-2xl shadow-xl p-8 text-center"
+      whileHover={{ scale: 1.03 }} 
+      className="bg-white rounded-2xl shadow-xl p-5 sm:p-8 text-center"
     >
-      {/* Icon uses the IconMap for dynamic rendering and has blue color */}
-      {IconComponent && <IconComponent size={48} className="text-blue-600 mb-4 mx-auto" />}
-      <h3 className="text-xl font-semibold mt-2">{item.title}</h3>
-      <p className="text-gray-600 mt-2">{item.text}</p>
+      {IconComponent && <IconComponent size={40} className="text-blue-600 mb-3 mx-auto" />}
+      <h3 className="text-base sm:text-xl font-semibold mt-1">{item.title}</h3>
+      <p className="text-gray-600 mt-2 text-sm sm:text-base">{item.text}</p>
     </motion.div>
   );
 };
 
+// --- FAQItem ---
 export const FAQItem = ({ item }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.4 }}
       className="bg-white border border-gray-200 rounded-xl shadow-sm"
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center p-5 text-left"
+        className="w-full flex justify-between items-center p-4 sm:p-5 text-left"
       >
-        <span className="text-lg font-semibold text-gray-800">
+        <span className="text-sm sm:text-lg font-semibold text-gray-800">
           {item.q}
         </span>
 
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-3xl font-bold text-gray-700"
+          transition={{ duration: 0.25 }}
+          className="text-2xl sm:text-3xl font-bold text-gray-700"
         >
           +
         </motion.span>
@@ -101,8 +99,8 @@ export const FAQItem = ({ item }) => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="px-5 pb-5 text-gray-600"
+            transition={{ duration: 0.3 }}
+            className="px-4 sm:px-5 pb-4 sm:pb-5 text-gray-600 text-sm sm:text-base"
           >
             {item.a}
           </motion.div>
@@ -112,52 +110,52 @@ export const FAQItem = ({ item }) => {
   );
 };
 
-
-// --- TestimonialCarousel Component ---
+// --- TestimonialCarousel ---
 export const TestimonialCarousel = () => {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
-  // Auto-advance logic
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentReviewIndex(prev => (prev + 1) % testimonials.length);
-    }, 6000); // Change every 6 seconds
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
   const currentReview = testimonials[currentReviewIndex];
 
   return (
-    <div className="relative h-96 flex flex-col items-center justify-center p-4">
-      {/* Testimonial Card */}
+    <div className="relative min-h-[320px] sm:min-h-[380px] flex flex-col items-center justify-center px-4">
       <div className="w-full max-w-3xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentReviewIndex}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.6 }}
             className="w-full"
           >
-            <div className="bg-gray-800 rounded-2xl shadow-xl p-8 sm:p-12 text-center flex flex-col items-center">
-              {/* Favicon for User Face */}
-              <UserCircle size={64} className="text-blue-500 mx-auto mb-4" /> 
-              
-              <p className="text-gray-300 italic text-base sm:text-lg mb-4 leading-relaxed">"{currentReview.feedback}"</p>
-              <h3 className="text-xl font-semibold text-blue-300 mt-4">{currentReview.name}</h3>
+            <div className="bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-10 text-center flex flex-col items-center">
+              <UserCircle size={48} className="text-blue-500 mb-4" /> 
+              <p className="text-gray-300 italic text-sm sm:text-lg mb-4 leading-relaxed">
+                "{currentReview.feedback}"
+              </p>
+              <h3 className="text-sm sm:text-xl font-semibold text-blue-300">
+                {currentReview.name}
+              </h3>
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Navigation Dots */}
-      <div className="absolute bottom-4 flex space-x-3 mt-8">
+      <div className="absolute -bottom-6 flex space-x-3 mt-8">
         {testimonials.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentReviewIndex(index)}
-            className={`h-3 w-3 rounded-full transition-colors ${index === currentReviewIndex ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-400'}`}
+            className={`h-2.5 w-2.5 rounded-full transition-colors ${
+              index === currentReviewIndex ? 'bg-blue-500' : 'bg-gray-400 hover:bg-gray-300'
+            }`}
             aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}

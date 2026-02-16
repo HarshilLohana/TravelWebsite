@@ -47,12 +47,15 @@ export default function CruiseBooking() {
   return (
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* --- HERO SECTION --- */}
-      <section className="relative w-full h-[65vh] md:h-[75vh] overflow-hidden">
+      <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentImage}
             src={cruiseHeroImages[currentImage]}
             alt="Worldwide luxury cruise experiences by Arabian Amenity Travels"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
             className="absolute inset-0 w-full h-full object-cover brightness-75"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -62,64 +65,66 @@ export default function CruiseBooking() {
         </AnimatePresence>
 
         {/* Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black/40 px-6">
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-gradient-to-t from-black/70 via-black/40 to-black/20 px-6">
           {/* SEO H1 (hidden for Google) */}
-<h1 className="sr-only">
-  Worldwide Cruise Booking Services by Arabian Amenity Travels
-</h1>
+          <h1 className="sr-only">
+            Worldwide Cruise Booking Services by Arabian Amenity Travels
+          </h1>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl font-extrabold mb-4"
+            className="text-[clamp(1.8rem,6vw,3.5rem)] font-extrabold mb-4 leading-tight"
           >
             Worldwide Cruise Experiences
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-lg md:text-xl max-w-3xl text-gray-200"
+            className="text-[clamp(0.95rem,2.5vw,1.2rem)] max-w-3xl text-gray-200"
           >
-            Embark on unforgettable journeys across the world’s oceans and
-            rivers with <span className="font-semibold">Arabian Amenity Travels</span> — your gateway to luxury cruise experiences.
+            Embark on unforgettable journeys across the world’s oceans and rivers with{" "}
+            <span className="font-semibold">Arabian Amenity Travels</span> — your gateway to luxury cruise experiences.
           </motion.p>
         </div>
       </section>
 
       {/* --- CRUISE TYPES --- */}
-      <section className="py-20 px-6 md:px-16 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      <section className="py-16 px-6 md:px-16 bg-gray-50">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 text-gray-800">
           Our Global Cruise Options
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {cruiseTypes.map((cruise, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -10, scale: 1.03 }}
+              whileHover={{ y: -8, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 150 }}
-              className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl text-center"
+              className="bg-white p-6 md:p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl text-center"
             >
-              <div className="text-5xl mb-4">{cruise.icon}</div>
-              <h3 className="text-xl font-semibold mb-3 text-blue-700">
+              <div className="text-4xl md:text-5xl mb-4">{cruise.icon}</div>
+              <h3 className="text-lg md:text-xl font-semibold mb-3 text-blue-700">
                 {cruise.title}
               </h3>
-              <p className="text-gray-600 text-sm">{cruise.description}</p>
+              <p className="text-gray-600 text-sm md:text-base">
+                {cruise.description}
+              </p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* --- TOP DESTINATIONS --- */}
-      
-
       {/* --- WHY CHOOSE US --- */}
-      <section className="py-20 bg-gray-50 px-6 md:px-16 text-center">
-        <h2 className="text-3xl font-bold mb-10 text-gray-800">
+      <section className="py-16 bg-gray-50 px-6 md:px-16 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-gray-800">
           Why Cruise with Arabian Amenity Travels?
         </h2>
-        <div className="grid md:grid-cols-3 gap-10">
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
               title: "Worldwide Cruise Network",
@@ -136,36 +141,37 @@ export default function CruiseBooking() {
           ].map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.05 }}
-              className="p-8 bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg"
+              whileHover={{ scale: 1.03 }}
+              className="p-6 md:p-8 bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg"
             >
-              <h3 className="text-lg font-semibold mb-3 text-blue-700">
+              <h3 className="text-lg md:text-xl font-semibold mb-3 text-blue-700">
                 {item.title}
               </h3>
-              <p className="text-gray-600">{item.text}</p>
+              <p className="text-gray-600 text-sm md:text-base">{item.text}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* --- CTA SECTION --- */}
-      <section className="bg-blue-900 text-white text-center py-16">
+      <section className="bg-blue-900 text-white text-center py-14 px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold mb-6"
+          className="text-2xl md:text-3xl font-bold mb-6"
         >
           Ready to Sail the World?
         </motion.h2>
-        <p className="mb-6 text-gray-300 max-w-2xl mx-auto">
-          Whether you dream of the Mediterranean, Caribbean, or Antarctica —
-          Arabian Amenity Travels is your trusted partner in crafting unforgettable global cruise journeys.
+
+        <p className="mb-6 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
+          Whether you dream of the Mediterranean, Caribbean, or Antarctica — Arabian Amenity Travels is your trusted partner in crafting unforgettable global cruise journeys.
         </p>
+
         <motion.a
           href="/contact"
           whileHover={{ scale: 1.05 }}
-          className="bg-white text-blue-900 font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-xl transition"
+          className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full shadow-md hover:shadow-xl transition"
         >
           Get in Touch
         </motion.a>

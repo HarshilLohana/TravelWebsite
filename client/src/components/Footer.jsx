@@ -20,12 +20,12 @@ const Footer = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-gray-900">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-gray-900 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 place-items-center md:place-items-start">
           
           {/* About */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">About Us</h3>
+          <div className="max-w-sm">
+            <h3 className="text-lg md:text-xl font-bold mb-4">About Us</h3>
             <p className="text-sm">
               Arabian Amenity Travels is a premium travel agency offering global
               tours, corporate travel solutions, luxury experiences, and UAE-based
@@ -34,8 +34,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+          <div className="max-w-sm">
+            <h3 className="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/" className="hover:text-blue-600">Home</Link></li>
               <li><Link to="/about" className="hover:text-blue-600">About Us</Link></li>
@@ -45,8 +45,8 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Our Services</h3>
+          <div className="max-w-sm">
+            <h3 className="text-lg md:text-xl font-bold mb-4">Our Services</h3>
             <ul className="space-y-2 text-sm">
               <li><Link to="/ctravel" className="hover:text-blue-600">Corporate Travel</Link></li>
               <li><Link to="/rentacar" className="hover:text-blue-600">Rent a Car</Link></li>
@@ -58,12 +58,12 @@ const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+          <div className="max-w-sm">
+            <h3 className="text-lg md:text-xl font-bold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="tel:+97142648306" className="hover:text-blue-600">
-                  +971 4 264 8306
+                  +971 56 685 7588
                 </a>
               </li>
               <li>
@@ -78,7 +78,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            <div className="flex space-x-4 mt-4">
+            <div className="flex space-x-4 mt-4 justify-center md:justify-start">
               <a
                 href="https://www.facebook.com/"
                 target="_blank"
@@ -88,7 +88,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://www.instagram.com/arabianamenitytravels"
+                href="https://www.instagram.com/arabianamenity"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

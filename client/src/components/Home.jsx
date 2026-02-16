@@ -9,7 +9,6 @@ import {
   WhyUsItem,
 } from "../components/Utilities.jsx";
 
-
 const dubaiAttractions = [
   { id: 1, name: "Burj Khalifa", image: "/images/burj.webp" },
   { id: 2, name: "Dubai Mall", image: "/images/mall.webp" },
@@ -20,7 +19,6 @@ const dubaiAttractions = [
 ];
 
 const Home = () => {
-  // ✅ Hooks MUST be inside component
   const [openFAQ, setOpenFAQ] = React.useState(null);
 
   const faqs = [
@@ -52,20 +50,16 @@ const Home = () => {
   ];
 
   return (
-    <>
-  
-    <div className="font-sans bg-stone-100 text-stone-800">
-
+    <div className="font-sans bg-stone-100 text-stone-800 overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection />
       <h1 className="sr-only">
-  Arabian Amenity Travels – Global Tours, UAE Experiences & Corporate Travel Solutions
-</h1>
-
+        Arabian Amenity Travels – Global Tours, UAE Experiences & Corporate Travel Solutions
+      </h1>
 
       {/* Stats Section */}
-      <section className="container mx-auto py-16 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+      <section className="container mx-auto py-14 md:py-16 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
           {statsData.map((stat, i) => (
             <AnimatedCounter key={i} {...stat} />
           ))}
@@ -73,71 +67,77 @@ const Home = () => {
       </section>
 
       {/* Services */}
-      <section className="container mx-auto py-16 px-4 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+      <section className="container mx-auto py-14 md:py-16 px-4 text-center">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
           OUR SERVICES
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          <div className="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
-            <Plane size={48} className="text-blue-600 mb-4" />
-            <h3 className="text-xl font-bold">Flight Bookings</h3>
-            <p className="text-sm mt-2 text-gray-600">
-              Best deals to any destination.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
-            <MapPin size={48} className="text-blue-600 mb-4" />
-            <h3 className="text-xl font-bold">Hotel Reservations</h3>
-            <p className="text-sm mt-2 text-gray-600">
-              Comfortable stays guaranteed.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
-            <Globe size={48} className="text-blue-600 mb-4" />
-            <h3 className="text-xl font-bold">Tour Packages</h3>
-            <p className="text-sm mt-2 text-gray-600">
-              Curated tours for every traveler.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-xl flex flex-col items-center">
-            <Award size={48} className="text-blue-600 mb-4" />
-            <h3 className="text-xl font-bold">Visa Assistance</h3>
-            <p className="text-sm mt-2 text-gray-600">Expert visa guidance.</p>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-10 md:mt-12">
+          {[
+            {
+              Icon: Plane,
+              title: "Flight Bookings",
+              desc: "Best deals to any destination.",
+            },
+            {
+              Icon: MapPin,
+              title: "Hotel Reservations",
+              desc: "Comfortable stays guaranteed.",
+            },
+            {
+              Icon: Globe,
+              title: "Tour Packages",
+              desc: "Curated tours for every traveler.",
+            },
+            {
+              Icon: Award,
+              title: "Visa Assistance",
+              desc: "Expert visa guidance.",
+            },
+          ].map(({ Icon, title, desc }) => (
+            <div
+              key={title}
+              className="bg-white p-5 md:p-6 rounded-2xl shadow-xl flex flex-col items-center"
+            >
+              <Icon size={40} className="text-blue-600 mb-3" />
+              <h3 className="text-base md:text-xl font-bold">{title}</h3>
+              <p className="text-xs md:text-sm mt-2 text-gray-600">
+                {desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Dubai Attractions */}
       <section
-        className="relative py-20 bg-cover bg-center text-white"
+        className="relative py-16 md:py-20 bg-cover bg-center text-white"
         style={{ backgroundImage: "url('/images/attractions1 (2).webp')" }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
+        <div className="absolute inset-0 bg-black/55 backdrop-blur-sm"></div>
 
         <div className="relative container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-[#FFD700] tracking-wide">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-[#FFD700] tracking-wide">
             DUBAI ATTRACTIONS
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {dubaiAttractions.map((attraction) => (
               <motion.div
                 key={attraction.id}
                 whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                transition={{ type: "spring", stiffness: 180, damping: 16 }}
                 className="group relative bg-white/10 backdrop-blur-xl rounded-3xl overflow-visible border border-white/20 shadow-2xl p-3"
               >
-                <h3 className="absolute left-1/2 -top-5 transform -translate-x-1/2 text-[#FFD700] font-bold tracking-wide text-lg transition-opacity duration-500 group-hover:opacity-0">
+                <h3 className="absolute left-1/2 -top-5 transform -translate-x-1/2 text-[#FFD700] font-bold tracking-wide text-sm md:text-lg transition-opacity duration-500 group-hover:opacity-0">
                   {attraction.name}
                 </h3>
 
                 <motion.img
                   src={attraction.image}
                   alt={attraction.name}
-                  className="h-56 w-full object-cover rounded-2xl"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-52 md:h-56 w-full object-cover rounded-2xl"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6 }}
                 />
@@ -148,30 +148,36 @@ const Home = () => {
       </section>
 
       {/* Popular Destinations */}
-      <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
+      <section className="container mx-auto py-14 md:py-16 px-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-gray-900">
           POPULAR DESTINATIONS
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {destinations.map((dest) => (
             <motion.div
               key={dest.id}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.04 }}
               className="relative group bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer"
             >
               <motion.img
                 src={dest.image}
                 alt={dest.name}
-                className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
+                className="h-56 md:h-64 w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/50 text-white flex flex-col items-center justify-center p-4 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-                <h3 className="text-xl font-bold mb-2 text-center">
+                <h3 className="text-base md:text-xl font-bold mb-2 text-center">
                   {dest.name}
                 </h3>
-                <p className="text-sm text-center mb-4">{dest.text}</p>
+                <p className="text-xs md:text-sm text-center mb-4">
+                  {dest.text}
+                </p>
               </div>
-              <div className="p-6 text-center transition-opacity duration-500 group-hover:opacity-0">
-                <h3 className="text-xl font-semibold uppercase">{dest.name}</h3>
+              <div className="p-5 md:p-6 text-center transition-opacity duration-500 group-hover:opacity-0">
+                <h3 className="text-base md:text-xl font-semibold uppercase">
+                  {dest.name}
+                </h3>
               </div>
             </motion.div>
           ))}
@@ -179,11 +185,11 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
+      <section className="container mx-auto py-14 md:py-16 px-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-gray-900">
           WHY CHOOSE US
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
           {whyUsItems.map((item) => (
             <WhyUsItem key={item.id} item={item} />
           ))}
@@ -191,9 +197,9 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-gray-900 py-16 px-4 text-white">
+      <section className="bg-gray-900 py-14 md:py-16 px-4 text-white">
         <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-white">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-white">
             WHAT OUR CLIENTS SAY
           </h2>
           <TestimonialCarousel />
@@ -201,12 +207,12 @@ const Home = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
+      <section className="container mx-auto py-14 md:py-16 px-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-gray-900">
           FREQUENTLY ASKED QUESTIONS
         </h2>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3 md:space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openFAQ === index;
 
@@ -217,9 +223,9 @@ const Home = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(isOpen ? null : index)}
-                  className="w-full flex justify-between items-center p-5 text-left"
+                  className="w-full flex justify-between items-center p-4 md:p-5 text-left"
                 >
-                  <span className="text-lg font-semibold text-gray-800">
+                  <span className="text-sm md:text-lg font-semibold text-gray-800">
                     {faq.question}
                   </span>
 
@@ -229,7 +235,7 @@ const Home = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6 text-gray-700"
+                      className="w-5 h-5 md:w-6 md:h-6 text-gray-700"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -250,12 +256,14 @@ const Home = () => {
                     opacity: isOpen ? 1 : 0,
                   }}
                   transition={{
-                    duration: 0.35,
+                    duration: 0.3,
                     ease: "easeInOut",
                   }}
-                  className="px-5 overflow-hidden"
+                  className="px-4 md:px-5 overflow-hidden"
                 >
-                  <p className="pb-5 text-gray-600">{faq.answer}</p>
+                  <p className="pb-4 md:pb-5 text-xs md:text-base text-gray-600">
+                    {faq.answer}
+                  </p>
                 </motion.div>
               </div>
             );
@@ -264,19 +272,16 @@ const Home = () => {
       </section>
 
       {/* WhatsApp Floating Button */}
-     {/* WhatsApp Floating Button */}
-<a
-  href="https://wa.me/97142648306?text=Hello%20Arabian%20Amenity%20Travels%2C%20I%20need%20travel%20assistance"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Chat with us on WhatsApp"
-  className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors z-50"
->
-  <MessageCircle size={32} />
-</a>
-
+      <a
+        href="https://wa.me/97142648306?text=Hello%20Arabian%20Amenity%20Travels%2C%20I%20need%20travel%20assistance"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors z-50"
+      >
+        <MessageCircle size={28} className="md:size-8" />
+      </a>
     </div>
-    </>
   );
 };
 

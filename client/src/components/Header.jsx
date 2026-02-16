@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems } from "../data/constants.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null);
-
-
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   /* ---------------- USER LOAD ---------------- */
   useEffect(() => {
@@ -38,10 +38,20 @@ export const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  /* ---------------- LOCK BODY SCROLL ON MOBILE NAV ---------------- */
   useEffect(() => {
-  if (!mobileNav) setMobileDropdown(null);
-}, [mobileNav]);
+    if (mobileNav) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [mobileNav]);
 
+  /* ---------------- CLOSE MOBILE NAV ON ROUTE CHANGE ---------------- */
+  useEffect(() => {
+    setMobileNav(false);
+    setMobileDropdown(null);
+  }, [location.pathname]);
 
   const logout = () => {
     localStorage.clear();
@@ -52,14 +62,14 @@ export const Header = () => {
 
   return (
     <>
-      {/* ✅ SEO H1 (hidden but indexed) */}
+      {/* SEO H1 (hidden) */}
       <h1 className="sr-only">
         Arabian Amenity Travels – Global Tours, Corporate Travel & Luxury Experiences
       </h1>
 
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300
-        ${scrolled ? "bg-[#0a0d1a]/95 shadow-lg" : "bg-transparent"}`}
+        ${scrolled ? "bg-[#0a0d1a]/95 shadow-lg backdrop-blur" : "bg-transparent"}`}
       >
         <div className="container mx-auto flex justify-between items-center px-6 py-3">
 
@@ -68,7 +78,7 @@ export const Header = () => {
             <img
               src="/images/LogoNOBG.webp"
               alt="Arabian Amenity Travels Logo"
-              className="h-16 md:h-20 w-auto"
+              className="h-12 md:h-20 w-auto"
             />
           </Link>
 
@@ -127,13 +137,14 @@ export const Header = () => {
           <div className="hidden md:flex space-x-4">
             {!user ? (
               <>
-                <Link to="/login" className={`
-  px-6 py-2 rounded-full font-bold transition-all
-  ${scrolled
-    ? "bg-white text-blue-700"
-    : "bg-white/10 text-white backdrop-blur-md border border-white/40"}
-`}
->
+                <Link
+                  to="/login"
+                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                    scrolled
+                      ? "bg-white text-blue-700"
+                      : "bg-white/10 text-white backdrop-blur-md border border-white/40"
+                  }`}
+                >
                   Login
                 </Link>
                 <Link to="/signup" className="bg-blue-500 px-5 py-2 rounded-full hover:bg-blue-600">
@@ -157,9 +168,13 @@ export const Header = () => {
             )}
           </div>
 
-          {/* MOBILE MENU */}
-          <button className="md:hidden text-white" onClick={() => setMobileNav(true)}>
-            <Menu size={28} />
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden text-white p-2 rounded-lg active:scale-95 transition"
+            onClick={() => setMobileNav(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={26} />
           </button>
         </div>
       </header>
@@ -171,106 +186,100 @@ export const Header = () => {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 bg-[#0a0d1a] z-50 p-6 text-white overflow-y-auto overscroll-contain"
-
           >
             <div className="flex justify-end mb-6">
-              <X size={30} onClick={() => setMobileNav(false)} />
-            </div>
-<nav className="flex flex-col items-center space-y-6 text-xl">
-  {navItems.map((item) =>
-    item.type === "link" ? (
-      <Link
-        key={item.name}
-        to={item.href}
-        onClick={() => setMobileNav(false)}
-      >
-        {item.name}
-      </Link>
-    ) : (
-      <div key={item.name} className="text-center w-full">
-        <button
-          onClick={() =>
-            setMobileDropdown(
-              mobileDropdown === item.name ? null : item.name
-            )
-          }
-          className="flex items-center justify-center w-full"
-        >
-          {item.name}
-          <ChevronDown
-            className={`ml-2 transition-transform ${
-              mobileDropdown === item.name ? "rotate-180" : ""
-            }`}
-            size={16}
-          />
-        </button>
-
-        {mobileDropdown === item.name && (
-          <div className="mt-3 space-y-2">
-            {item.items.map((sub) => (
-              <Link
-                key={sub.name}
-                to={sub.href}
-                onClick={() => {
-                  setMobileDropdown(null);
-                  setMobileNav(false);
-                }}
-                className="block text-blue-300 py-1"
+              <button
+                onClick={() => setMobileNav(false)}
+                className="p-2 rounded-lg active:scale-95 transition"
+                aria-label="Close menu"
               >
-                {sub.name}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    )
-  )}
+                <X size={26} />
+              </button>
+            </div>
 
-  {/* ✅ MOBILE AUTH ACTIONS (CORRECT PLACE) */}
-  <div className="w-full mt-10 flex flex-col space-y-4">
-    {!user ? (
-      <>
-        <Link
-          to="/login"
-          onClick={() => setMobileNav(false)}
-          className="w-full text-center py-3 rounded-full bg-white text-blue-700 font-bold"
-        >
-          Login
-        </Link>
+            <nav className="flex flex-col items-center space-y-5 text-base">
+              {navItems.map((item) =>
+                item.type === "link" ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="py-2"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <div key={item.name} className="text-center w-full">
+                    <button
+                      onClick={() =>
+                        setMobileDropdown(
+                          mobileDropdown === item.name ? null : item.name
+                        )
+                      }
+                      className="flex items-center justify-center w-full py-2"
+                    >
+                      {item.name}
+                      <ChevronDown
+                        className={`ml-2 transition-transform ${
+                          mobileDropdown === item.name ? "rotate-180" : ""
+                        }`}
+                        size={16}
+                      />
+                    </button>
 
-        <Link
-          to="/signup"
-          onClick={() => setMobileNav(false)}
-          className="w-full text-center py-3 rounded-full bg-blue-500 text-white font-bold"
-        >
-          Sign Up
-        </Link>
-      </>
-    ) : (
-      <>
-        <Link
-          to={user.role === "admin" ? "/admin" : "/dashboard"}
-          onClick={() => setMobileNav(false)}
-          className="w-full text-center py-3 rounded-full bg-green-600 text-white font-bold"
-        >
-          Dashboard
-        </Link>
+                    {mobileDropdown === item.name && (
+                      <div className="mt-3 space-y-2">
+                        {item.items.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.href}
+                            className="block py-1 text-blue-300"
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              )}
 
-        <button
-          onClick={() => {
-            logout();
-            setMobileNav(false);
-          }}
-          className="w-full py-3 rounded-full bg-red-600 text-white font-bold"
-        >
-          Logout
-        </button>
-      </>
-    )}
-  </div>
-</nav>
-
+              {/* MOBILE AUTH ACTIONS */}
+              <div className="w-full mt-10 flex flex-col space-y-3">
+                {!user ? (
+                  <>
+                    <Link
+                      to="/login"
+                      className="w-full text-center py-3 rounded-full bg-white text-blue-700 font-semibold"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/signup"
+                      className="w-full text-center py-3 rounded-full bg-blue-500 text-white font-semibold"
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to={user.role === "admin" ? "/admin" : "/dashboard"}
+                      className="w-full text-center py-3 rounded-full bg-green-600 text-white font-semibold"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={logout}
+                      className="w-full py-3 rounded-full bg-red-600 text-white font-semibold"
+                    >
+                      Logout
+                    </button>
+                  </>
+                )}
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

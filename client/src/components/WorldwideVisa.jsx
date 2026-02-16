@@ -18,55 +18,59 @@ export default function WorldwideVisa() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-gray-900">
-      {/* --- HERO SECTION --- */}
-      <div className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+    <div className="w-full bg-white text-gray-900 overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentImage}
             src={visaHeroImages[currentImage]}
             alt="Worldwide tourist visa assistance by Arabian Amenity Travels"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
             className="absolute inset-0 w-full h-full object-cover brightness-75"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
         </AnimatePresence>
 
-        {/* Overlay content */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black/40">
-          {/* SEO H1 (hidden for Google) */}
-<h1 className="sr-only">
-  Worldwide Tourist Visa Assistance Services by Arabian Amenity Travels
-</h1>
+        {/* SEO H1 */}
+        <h1 className="sr-only">
+          Worldwide Tourist Visa Assistance Services by Arabian Amenity Travels
+        </h1>
+
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-gradient-to-t from-black/70 via-black/40 to-black/20 px-6">
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-3xl md:text-5xl font-bold mb-3"
+            transition={{ delay: 0.3 }}
+            className="text-[clamp(1.8rem,6vw,3.5rem)] font-bold mb-4"
           >
             Worldwide Tourist Visa Assistance
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-base md:text-lg mb-6 max-w-2xl"
+            transition={{ delay: 0.5 }}
+            className="text-[clamp(0.95rem,2.5vw,1.15rem)] mb-6 max-w-2xl text-gray-200"
           >
-            Arabian Amenity Travels provides worldwide tourist visa documentation support — 
-            helping you explore every destination with ease, exclusively from the UAE.
+            Arabian Amenity Travels provides worldwide tourist visa documentation
+            support — helping you explore every destination with ease,
+            exclusively from the UAE.
           </motion.p>
         </div>
-      </div>
+      </section>
 
-      {/* --- VISA SERVICE SECTION --- */}
-      <section className="py-20 px-6 md:px-16 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      {/* VISA SERVICES */}
+      <section className="py-16 px-6 md:px-16 bg-gray-50">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 text-gray-800">
           Your Gateway to Global Travel
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {[
             {
               icon: "🧳",
@@ -86,25 +90,27 @@ export default function WorldwideVisa() {
           ].map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -8, scale: 1.03 }}
+              whileHover={{ y: -6, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 150 }}
-              className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl text-center"
+              className="bg-white p-5 md:p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl text-center"
             >
-              <div className="text-5xl mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <div className="text-4xl md:text-5xl mb-3 md:mb-4">{item.icon}</div>
+              <h3 className="text-base md:text-xl font-semibold mb-2 md:mb-3">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 text-sm md:text-base">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* --- WHY CHOOSE US --- */}
-      <section className="py-16 bg-white px-6 md:px-16 text-center">
-        <h2 className="text-3xl font-bold mb-10 text-gray-800">
+      {/* WHY US */}
+      <section className="py-14 bg-white px-6 md:px-16 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-10 text-gray-800">
           Why Choose Arabian Amenity Travels?
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {[
             {
               title: "UAE-Based Experts",
@@ -121,23 +127,25 @@ export default function WorldwideVisa() {
           ].map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.05 }}
-              className="p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-md"
+              whileHover={{ scale: 1.04 }}
+              className="p-5 md:p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-md"
             >
-              <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-600">{item.text}</p>
+              <h3 className="text-base md:text-lg font-semibold mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-600 text-sm md:text-base">{item.text}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* --- CTA SECTION --- */}
-      <section className="bg-black text-white text-center py-16">
-        <h2 className="text-3xl font-bold mb-6">
+      {/* CTA */}
+      <section className="bg-black text-white text-center py-14 px-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Plan Your Next Adventure with Confidence
         </h2>
-        <p className="mb-6 text-gray-300 max-w-2xl mx-auto">
-          Trust Arabian Amenity Travels for your worldwide tourist visa processing — 
+        <p className="mb-4 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
+          Trust Arabian Amenity Travels for your worldwide tourist visa processing —
           making global travel simple, safe, and worry-free.
         </p>
       </section>
