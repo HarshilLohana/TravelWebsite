@@ -68,6 +68,51 @@ export const WhyUsItem = ({ item }) => {
   );
 };
 
+export const FAQItem = ({ item }) => {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white border border-gray-200 rounded-xl shadow-sm"
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center p-5 text-left"
+      >
+        <span className="text-lg font-semibold text-gray-800">
+          {item.q}
+        </span>
+
+        <motion.span
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-3xl font-bold text-gray-700"
+        >
+          +
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="px-5 pb-5 text-gray-600"
+          >
+            {item.a}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+
 // --- TestimonialCarousel Component ---
 export const TestimonialCarousel = () => {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);

@@ -2,28 +2,46 @@
 
 // Array of images for the hero section
 export const heroImages = [
-  "/images/image1.jpg",
-  "/images/image2.jpg",
-  "/images/image3.jpg",
-  "/images/image4.jpg"
+  "/images/home1.webp",
+  "/images/home3.webp",
+  "/images/home4.webp",
+  "/images/home2.webp",
 ];
+export const heroVideos = [
+  "/images/video1.mp4",
+];
+
+
 
 export const navItems = [
   { name: "Home", href: "/", type: "link" },
-  { 
-    name: "Trips", 
-    type: "dropdown", 
+  { name: "About Us", href: "/about", type: "link" },
+  { name: "Corporate Travel", href: "/ctravel", type: "link" },
+
+  {
+    name: "Within UAE",
+    type: "dropdown",
     items: [
-      { name: "Start Planning", href: "#startplanning" },
-      { name: "Services", href: "#services" },
-      { name: "Holidays", href: "#holidays" }
-    ]
+      { name: "Rent a Car", href: "/rentacar" },
+      { name: "Cruise Booking", href: "/cruisebooking" },
+    ],
   },
-  { name: "Blog", href: "#blogs", type: "link" },
-  { name: "Rent a Car", href: "/rentacar", type: "link" },
-  { name: "Reviews", href: "#reviews", type: "link" },
-  { name: "Contact", href: "#contactus", type: "link" }
+  {
+    name: "Outside UAE",
+    type: "dropdown",
+    items: [
+      { name: "Worldwide Visa Assistance", href: "/visaassistance" },
+      { name: "Worldwide Hotel Booking", href: "/hotelbooking" },
+      { name: "Worldwide Travel Insurance", href: "/travelinsurance" },
+      { name: "Worldwide Chauffer Service", href: "/chauffeurservice" },
+    ],
+  },
+
+  { name: "Services", href: "/services", type: "link" },
+  { name: "Reviews", href: "/reviews", type: "link" },
+  { name: "Contact Us", href: "/contact", type: "link" },
 ];
+
 
 export const statsData = [
   { countTo: 10, title: "Years of Experience", iconName: "Award", suffix: "+" },
@@ -32,9 +50,9 @@ export const statsData = [
 ];
 
 export const destinations = [
-  { id: 1, name: "Paris, France", text: "Iconic landmarks, exquisite cuisine, and world-class art.", image: '/images/image5.jpg' },
-  { id: 2, name: "Tokyo, Japan", text: "A mesmerizing blend of ancient temples and futuristic cityscapes.", image: '/images/image6.jpg' },
-  { id: 3, name: "Bora Bora", text: "Private villas, turquoise waters, and ultimate relaxation.", image: '/images/image7.jpg' },
+  { id: 1, name: "Paris, France", text: "Iconic landmarks, exquisite cuisine, and world-class art.", image: '/images/image5.webp' },
+  { id: 2, name: "Tokyo, Japan", text: "A mesmerizing blend of ancient temples and futuristic cityscapes.", image: '/images/image6.webp' },
+  { id: 3, name: "Bora Bora", text: "Private villas, turquoise waters, and ultimate relaxation.", image: '/images/image7.webp' },
 ];
 
 export const tours = [
@@ -50,8 +68,8 @@ export const whyUsItems = [
 ];
 
 export const testimonials = [
-  { id: 1, name: "Alice Johnson", feedback: "The experience was absolutely phenomenal! Everything was perfectly organized from start to finish. The team handled all the planning seamlessly, leaving us only to enjoy our trip.", image: '/images/user1.jpg' },
-  { id: 2, name: "Mark Smith", feedback: "This was the best travel experience ever. I highly recommend them! The destination was breathtaking, and the service from the local guides was truly top-notch.", image: '/images/user2.jpg' },
-  { id: 3, name: "Sophie Lee", feedback: "They provided luxury and comfort combined with genuine adventure. I loved it! I will definitely book my next vacation through them for their stress-free service.", image: '/images/user3.jpg' },
-  { id: 4, name: "David Kim", feedback: "Incredible value for money. They found amazing, exclusive spots we would never have discovered on our own. Five stars for attention to detail!", image: '/images/user4.jpg' },
+  { id: 1, name: "Alice Johnson", feedback: "The experience was absolutely phenomenal! Everything was perfectly organized from start to finish. The team handled all the planning seamlessly, leaving us only to enjoy our trip.", image: '/images/user1.webp' },
+  { id: 2, name: "Mark Smith", feedback: "This was the best travel experience ever. I highly recommend them! The destination was breathtaking, and the service from the local guides was truly top-notch.", image: '/images/user2.webp' },
+  { id: 3, name: "Sophie Lee", feedback: "They provided luxury and comfort combined with genuine adventure. I loved it! I will definitely book my next vacation through them for their stress-free service.", image: '/images/user3.webp' },
+  { id: 4, name: "David Kim", feedback: "Incredible value for money. They found amazing, exclusive spots we would never have discovered on our own. Five stars for attention to detail!", image: '/images/user4.webp' },
 ];

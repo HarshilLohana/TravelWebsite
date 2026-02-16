@@ -11,7 +11,7 @@ const SplashScreen = () => {
       className="fixed inset-0 flex items-center justify-center bg-white z-[100]"
     >
       <motion.img
-        src="/images/LogoNOBG.png"
+        src="/images/LogoNOBG.webp"
         alt="Logo"
         initial={{ scale: 0.8, opacity: 0.5 }}
         animate={{ scale: 1.1, opacity: 1 }}
