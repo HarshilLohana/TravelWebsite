@@ -112,18 +112,7 @@ export default function Reviews() {
             >
               <Quote className="absolute top-4 left-4 text-blue-400 opacity-30 w-8 h-8 md:w-10 md:h-10" />
               <div className="flex flex-col items-center">
-                <motion.img
-                  src={testimonials[testimonialIndex].image}
-                  alt={testimonials[testimonialIndex].name}
-                  loading="lazy"
-                  decoding="async"
-                  width="112"
-                  height="112"
-                  className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-4 border-white shadow-md mb-5 md:mb-6"
-                  initial={{ scale: 0.95, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                />
+                
                 <p className="text-sm md:text-lg italic text-gray-700 leading-relaxed mb-5 md:mb-6">
                   “{testimonials[testimonialIndex].review}”
                 </p>
