@@ -9,7 +9,7 @@ const SplashScreen = ({ onFinish }) => {
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         exit={{ opacity: 0 }}
-        transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
+        transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
         className="fixed inset-0 flex items-center justify-center bg-white z-[100] pointer-events-none"
         onAnimationComplete={onFinish}
       >
@@ -20,7 +20,7 @@ const SplashScreen = ({ onFinish }) => {
           decoding="async"
           initial={{ scale: 0.9, opacity: 0.8 }}
           animate={{ scale: 1.05, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
           className="w-28 sm:w-36 h-auto"
         />
       </motion.div>

@@ -5,7 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
-import ProtectedRoute from "./components/ProtectedRoutes";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
@@ -105,17 +106,19 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 1200);
+    const t = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(t);
   }, []);
 
   if (loading) return <SplashScreen />;
 
   return (
-    <Router>
-      <Suspense fallback={null}>
-        <MainLayout />
-      </Suspense>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <Suspense fallback={null}>
+          <MainLayout />
+        </Suspense>
+      </Router>
+    </ErrorBoundary>
   );
 }
