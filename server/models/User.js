@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 6,
-      select: false // Hides password in queries by default
+      select: false,
     },
 
     role: {
@@ -38,13 +38,19 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// ─── Indexes ───────────────────────────────────────────────────────────────────
+
+// Email is already unique: true above which creates an index automatically
+// Adding explicit index for role — used when checking admin exists on startup
+userSchema.index({ role: 1 });
+
 /* ------------------ PASSWORD HASHING ------------------ */
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  
+
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  
+
   next();
 });
 
@@ -62,22 +68,32 @@ userSchema.methods.toJSON = function () {
 
 /* ------------------ CREATE DEFAULT ADMIN ------------------ */
 userSchema.statics.createDefaultAdmin = async function () {
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
+    console.error("❌ Cannot seed admin — ADMIN_EMAIL or ADMIN_PASSWORD missing from environment");
+    return;
+  }
+
   try {
     const adminExists = await this.findOne({ role: "admin" });
 
     if (!adminExists) {
       const admin = new this({
         name: "Super Admin",
-        email: process.env.ADMIN_EMAIL || "admin@gmail.com",
-        password: process.env.ADMIN_PASSWORD || "Admin@123",
+        email: adminEmail,
+        password: adminPassword,
         role: "admin",
       });
 
       await admin.save();
       console.log("🎯 Default Admin Created:", admin.email);
+    } else {
+      console.log("✅ Admin account already exists:", adminExists.email);
     }
   } catch (error) {
-    console.error("Admin creation failed:", error);
+    console.error("❌ Admin creation failed:", error.message);
   }
 };
 

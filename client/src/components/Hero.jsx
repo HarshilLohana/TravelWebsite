@@ -2,12 +2,21 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { heroImages } from "../data/constants.js";
 
+// Preload an image by creating a new Image object
+// This tells the browser to download it in the background
+// before it becomes visible — eliminates chunky loading
+function preloadImage(src) {
+  const img = new Image();
+  img.src = src;
+}
+
 const HeroSection = () => {
   const heroVideo = "/images/video1.mp4";
   const totalSlides = heroImages.length + 1;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Check if mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -15,15 +24,27 @@ const HeroSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Preload ALL hero images immediately on mount
+  // This runs once when the page loads and downloads
+  // all hero images in the background silently
+  useEffect(() => {
+    heroImages.forEach((src) => preloadImage(src));
+  }, []);
+
+  // Auto advance slides
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % totalSlides);
+      setCurrentIndex((prev) => (prev + 1) % totalSlides);
     }, 5000);
     return () => clearInterval(interval);
   }, [totalSlides]);
 
   const isVideo = currentIndex === 0 && !isMobile;
-  const currentImageIndex = isVideo ? null : (currentIndex === 0 ? 0 : currentIndex - 1);
+  const currentImageIndex = isVideo
+    ? null
+    : currentIndex === 0
+    ? 0
+    : currentIndex - 1;
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden">
@@ -49,12 +70,12 @@ const HeroSection = () => {
               key={`hero-img-${currentImageIndex}`}
               src={heroImages[currentImageIndex]}
               alt="Luxury travel destinations with Arabian Amenity Travels"
-              loading={currentIndex === 0 ? "eager" : "lazy"}
-              fetchpriority={currentIndex === 0 ? "high" : "auto"}
+              loading="eager"
+              fetchpriority={currentImageIndex === 0 ? "high" : "auto"}
               decoding="async"
               width="1920"
               height="1080"
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+              className="absolute inset-0 w-full h-full object-cover"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
