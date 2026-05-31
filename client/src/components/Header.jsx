@@ -55,7 +55,7 @@ export const Header = () => {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate("/login");
   };
 
   if (loadingUser) return null;
