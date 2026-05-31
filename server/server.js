@@ -26,8 +26,9 @@ app.use(compression());
 const ALLOWED_ORIGINS = [
   "http://localhost:5173",
   "http://localhost:4173",
-  "https://arabianamenitytravels.com",
-  "https://www.arabianamenitytravels.com",
+  "https://arabianamenity.com",
+  "https://www.arabianamenity.com",
+  "https://arabian-amenity-travels.netlify.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean); // removes undefined if FRONTEND_URL is not set
 
