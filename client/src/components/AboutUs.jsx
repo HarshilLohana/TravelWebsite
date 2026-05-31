@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const carouselImages = [
   "/images/aboutus1.webp",
@@ -27,6 +28,12 @@ const AboutUs = () => {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>About Us | Arabian Amenity Travels</title>
+  <meta name="description" content="Learn about Arabian Amenity Travels — a premium UAE travel agency with 10+ years of experience offering global tours, corporate travel, and luxury experiences." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/about" />
+</Helmet>
     <div className="font-sans bg-stone-100 text-stone-800 overflow-x-hidden">
       {/* --- HERO CAROUSEL --- */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -189,7 +196,7 @@ const AboutUs = () => {
         </motion.a>
       </section>
     </div>
-  );
+  </>);
 };
 
 export default AboutUs;

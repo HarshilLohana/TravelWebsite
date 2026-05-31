@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const cruiseHeroImages = [
   "/images/cruise1.webp",
@@ -45,6 +46,12 @@ export default function CruiseBooking() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Cruise Booking Dubai | Arabian Amenity Travels</title>
+  <meta name="description" content="Book luxury cruises from Dubai with Arabian Amenity Travels. Ocean cruises, river cruises, and expedition packages tailored to your travel needs." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/cruisebooking" />
+</Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* --- HERO SECTION --- */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -178,5 +185,5 @@ export default function CruiseBooking() {
         </motion.a>
       </section>
     </div>
-  );
+  </>);
 }

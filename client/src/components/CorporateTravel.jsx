@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const corpHeroImages = [
   "/images/corporate1.webp",
@@ -18,6 +19,12 @@ export default function CorporateTravel() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Corporate Travel Management UAE | Arabian Amenity Travels</title>
+  <meta name="description" content="End-to-end corporate travel management for UAE businesses. Flights, hotels, visa support, 24/7 duty desk, and travel policy management by Arabian Amenity Travels." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/ctravel" />
+</Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -131,5 +138,5 @@ export default function CorporateTravel() {
         </motion.a>
       </section>
     </div>
-  );
+  </>);
 }

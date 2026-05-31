@@ -1,11 +1,14 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const carHeroImages = [
   "/images/BMW.webp",
   "/images/rr.webp",
   "/images/KIA.webp",
 ];
+
+
 
 const carCategories = [
   {
@@ -45,6 +48,12 @@ export default function RentCar() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+      <title>Rent a Car in Dubai | Arabian Amenity Travels</title>
+      <meta name="description" content="Rent a car in Dubai with Arabian Amenity Travels. Choose from standard, premium, and luxury vehicles with flexible rental options across the UAE." />
+      <link rel="canonical" href="https://arabianamenitytravels.com/rentacar" />
+    </Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* --- HERO SECTION --- */}
       <section className="relative w-full min-h-[65svh] md:min-h-[75vh] overflow-hidden">
@@ -173,5 +182,5 @@ export default function RentCar() {
         </motion.a>
       </section>
     </div>
-  );
+  </>);
 }

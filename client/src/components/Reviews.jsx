@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const testimonials = [
   {
@@ -51,6 +52,13 @@ export default function Reviews() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Customer Reviews | Arabian Amenity Travels</title>
+  <meta name="description" content="Read what our customers say about Arabian Amenity Travels. Trusted by 5000+ happy travelers worldwide for premium UAE and global travel experiences." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/reviews" />
+</Helmet>
+    
     <div className="font-sans text-stone-800 relative overflow-hidden bg-stone-100">
       {/* Hero Carousel */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -151,5 +159,5 @@ export default function Reviews() {
         </motion.a>
       </section>
     </div>
-  );
+  </>);
 }

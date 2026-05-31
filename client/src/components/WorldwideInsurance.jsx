@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const insuranceHeroImages = [
   "/images/insurance1.webp",
@@ -45,6 +46,13 @@ export default function WorldwideInsurance() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Worldwide Travel Insurance | Arabian Amenity Travels</title>
+  <meta name="description" content="Comprehensive travel insurance plans for individuals, families, and corporate travelers from UAE. Get covered for medical emergencies, trip cancellations, and more." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/travelinsurance" />
+</Helmet>
+   
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* HERO */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -162,5 +170,5 @@ export default function WorldwideInsurance() {
         </p>
       </section>
     </div>
-  );
+   </>);
 }

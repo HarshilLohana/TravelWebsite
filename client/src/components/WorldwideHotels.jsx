@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const hotelHeroImages = [
   "/images/hotel1.webp",
@@ -45,6 +46,13 @@ export default function WorldwideHotels() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Worldwide Hotel Booking | Arabian Amenity Travels</title>
+  <meta name="description" content="Book luxury, budget, and family hotels worldwide with Arabian Amenity Travels. Best rates guaranteed for individuals, families, and corporate travelers." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/hotelbooking" />
+</Helmet>
+    
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* HERO */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -162,5 +170,5 @@ export default function WorldwideHotels() {
         </p>
       </section>
     </div>
-  );
+  </>);
 }

@@ -69,6 +69,13 @@ export default function ContactUs() {
   };
 
   return (
+    <>
+    <Helmet>
+  <title>Contact Us | Arabian Amenity Travels</title>
+  <meta name="description" content="Get in touch with Arabian Amenity Travels. Contact us for travel packages, visa assistance, corporate travel, and hotel bookings in UAE and worldwide." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/contact" />
+</Helmet>
+    
     <div className="font-sans bg-gray-50 text-gray-900 overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -169,5 +176,5 @@ export default function ContactUs() {
         </motion.form>
       </section>
     </div>
-  );
+  </>);
 }

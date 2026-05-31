@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const visaHeroImages = [
   "/images/visa1.webp",
@@ -18,6 +19,12 @@ export default function WorldwideVisa() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+  <title>Worldwide Visa Assistance | Arabian Amenity Travels</title>
+  <meta name="description" content="Expert visa assistance for 100+ countries from UAE. Arabian Amenity Travels handles tourist visas, documentation support, and global visa processing." />
+  <link rel="canonical" href="https://arabianamenitytravels.com/visaassistance" />
+</Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* HERO */}
       <section className="relative w-full min-h-[70svh] md:min-h-[80vh] overflow-hidden">
@@ -152,5 +159,5 @@ export default function WorldwideVisa() {
         </p>
       </section>
     </div>
-  );
+  </>);
 }
