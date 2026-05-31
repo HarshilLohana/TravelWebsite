@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
+import ProtectedRoute from "./components/ProtectedRoutes";
 
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
@@ -28,7 +29,7 @@ import AdminDashboard from "./components/AdminDashboard";
 const variants = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -30 }
+  exit: { opacity: 0, y: -30 },
 };
 
 const PageWrapper = ({ children }) => (
@@ -43,7 +44,6 @@ const PageWrapper = ({ children }) => (
   </motion.div>
 );
 
-// This component will ALWAYS be inside <Router>
 function MainLayout() {
   const location = useLocation();
 
@@ -56,6 +56,7 @@ function MainLayout() {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
+          {/* ── Public Routes ── */}
           <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
           <Route path="/about" element={<PageWrapper><AboutUs /></PageWrapper>} />
           <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
@@ -68,12 +69,30 @@ function MainLayout() {
           <Route path="/ctravel" element={<PageWrapper><CorporateTravel /></PageWrapper>} />
           <Route path="/reviews" element={<PageWrapper><Reviews /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactUs /></PageWrapper>} />
-          <Route path="/admin" element={<PageWrapper><AdminDashboard /></PageWrapper>} />
-          <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
 
-          {/* Auth */}
+          {/* ── Auth Routes ── */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
+          {/* ── Protected: Logged-in users only ── */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <PageWrapper><Dashboard /></PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* ── Protected: Admin only ── */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute role="admin">
+                <PageWrapper><AdminDashboard /></PageWrapper>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </AnimatePresence>
 

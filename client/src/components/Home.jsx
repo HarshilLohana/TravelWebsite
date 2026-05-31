@@ -91,43 +91,42 @@ const Home = () => {
       </section>
 
       {/* Dubai Attractions (FIXED IMAGE LOADING ONLY) */}
-      <section
-        className="relative py-16 md:py-20 bg-cover bg-center text-white"
-        style={{ backgroundImage: "url('/images/attractions1 (2).webp')" }}
-      >
-        <div className="absolute inset-0 bg-black/55 backdrop-blur-sm"></div>
+      {/* Dubai Attractions (SIMPLE + FAST VERSION) */}
+<section
+  className="relative py-16 md:py-20 bg-cover bg-center text-white"
+  style={{ backgroundImage: "url('/images/attractions1 (2).webp')" }}
+>
+  <div className="absolute inset-0 bg-black/55"></div>
 
-        <div className="relative container mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-[#FFD700] tracking-wide">
-            DUBAI ATTRACTIONS
-          </h2>
+  <div className="relative container mx-auto px-4">
+    <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 md:mb-12 text-[#FFD700] tracking-wide">
+      DUBAI ATTRACTIONS
+    </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {dubaiAttractions.map((attraction) => (
-              <motion.div
-                key={attraction.id}
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 180, damping: 16 }}
-                className="group relative bg-white/10 backdrop-blur-xl rounded-3xl overflow-visible border border-white/20 shadow-2xl p-3"
-              >
-                <h3 className="absolute left-1/2 -top-5 transform -translate-x-1/2 text-[#FFD700] font-bold tracking-wide text-sm md:text-lg transition-opacity duration-500 group-hover:opacity-0">
-                  {attraction.name}
-                </h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {dubaiAttractions.map((attraction) => (
+        <div
+          key={attraction.id}
+          className="relative bg-white/10 rounded-3xl border border-white/20 shadow-xl p-3"
+        >
+          <h3 className="text-center text-[#FFD700] font-bold tracking-wide text-sm md:text-lg mb-3">
+            {attraction.name}
+          </h3>
 
-                <img
-                  src={attraction.image}
-                  alt={attraction.name}
-                  loading="lazy"
-                  decoding="async"
-                  width="400"
-                  height="250"
-                  className="h-52 md:h-56 w-full object-cover rounded-2xl"
-                />
-              </motion.div>
-            ))}
-          </div>
+          <img
+            src={attraction.image}
+            alt={attraction.name}
+            loading="lazy"
+            decoding="async"
+            width="400"
+            height="260"
+            className="h-52 md:h-56 w-full object-cover rounded-2xl"
+          />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Popular Destinations */}
       <section className="container mx-auto py-14 md:py-16 px-4">
