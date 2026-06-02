@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { API_BASE_URL } from "../config/api";
+import { Helmet } from "react-helmet-async";
 
 const heroImages = [
   "/images/contact1.webp",
@@ -169,7 +170,7 @@ export default function ContactUs() {
           <motion.button
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="w-full py-3 bg-blue-600 text-white rounded-full font-semibold"
+            className="w-full py-3 bg-[#c9a84c]s text-white rounded-full font-semibold"
           >
             Send Message
           </motion.button>

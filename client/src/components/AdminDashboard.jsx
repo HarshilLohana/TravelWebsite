@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                     <td className="p-3 sm:p-4">
                       <button
                         onClick={() => handleReplySubmit(msg._id)}
-                        className="px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 transition disabled:opacity-50"
+                        className="px-4 py-2 bg-[#c9a84c] hover:bg-[#b8963e] text-white rounded-md shadow transition disabled:opacity-50"
                         disabled={!msg.replyTemp}
                       >
                         Send

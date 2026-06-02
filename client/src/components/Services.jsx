@@ -142,7 +142,7 @@ const Services = () => {
               </div>
               <a
                 href="/contact"
-                className="mt-5 md:mt-6 border-t border-gray-200 pt-3 md:pt-4 text-blue-600 font-semibold hover:underline text-sm md:text-base"
+                className="mt-5 md:mt-6 border-t border-gray-200 pt-3 md:pt-4 text-[#c9a84c] font-semibold hover:underline text-sm md:text-base"
               >
                 Learn More →
               </a>
@@ -152,7 +152,7 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-blue-600 text-white py-14 md:py-16 text-center px-6">
+      <section className="bg-[#0a0d1a] text-white py-14 md:py-16 text-center px-6">
         <motion.h3
           className="text-2xl md:text-4xl font-bold mb-4"
           initial={{ opacity: 0, y: 30 }}
@@ -172,7 +172,7 @@ const Services = () => {
         <motion.a
           href="/contact"
           whileHover={{ scale: 1.05 }}
-          className="inline-block bg-white text-blue-600 font-bold py-3 px-7 md:px-8 rounded-full shadow-md hover:shadow-lg transition"
+          className="inline-block bg-white text-[#0a0d1a] font-bold py-3 px-7 md:px-8 rounded-full shadow-md hover:shadow-lg transition"
         >
           Contact Us
         </motion.a>

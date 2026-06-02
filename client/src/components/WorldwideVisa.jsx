@@ -153,11 +153,18 @@ export default function WorldwideVisa() {
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
           Plan Your Next Adventure with Confidence
         </h2>
-        <p className="mb-4 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
-          Trust Arabian Amenity Travels for your worldwide tourist visa processing —
-          making global travel simple, safe, and worry-free.
-        </p>
-      </section>
+       <p className="mb-6 text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
+  Trust Arabian Amenity Travels for your worldwide tourist visa processing —
+  making global travel simple, safe, and worry-free.
+</p>
+<motion.a
+  href="/contact"
+  whileHover={{ scale: 1.05 }}
+  className="inline-block bg-white text-black font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition"
+>
+  Get Visa Assistance
+</motion.a>
+</section>
     </div>
   </>);
 }

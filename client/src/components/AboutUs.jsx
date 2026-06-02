@@ -105,7 +105,7 @@ const AboutUs = () => {
       </section>
 
       {/* --- STATS SECTION --- */}
-      <section className="bg-blue-600 text-white py-14 md:py-16">
+      <section className="bg-[#0a0d1a] text-white py-14 md:py-16">
         <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6">
           {stats.map((item, index) => (
             <motion.div
@@ -171,7 +171,7 @@ const AboutUs = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.15 }}
-              className="p-3 md:p-4 bg-white rounded-full shadow-md hover:shadow-xl text-blue-600 transition"
+              className="p-3 md:p-4 bg-white rounded-full shadow-md hover:shadow-xl text-[#c9a84c] transition"
             >
               {social.icon}
             </motion.a>

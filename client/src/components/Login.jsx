@@ -53,7 +53,7 @@ const Login = () => {
 </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 flex items-center justify-center p-6 relative overflow-hidden">
       <Plane className="absolute top-10 left-10 text-blue-400 opacity-30 animate-pulse" size={60} />
-      <Globe className="absolute bottom-20 right-12 text-blue-500 opacity-20 animate-spin-slow" size={70} />
+      <Globe className="absolute bottom-20 right-12 text-[#c9a84c] opacity-20 animate-spin-slow" size={70} />
       <MapPin className="absolute top-1/2 left-6 text-red-400 opacity-20" size={50} />
 
       <motion.div
@@ -93,14 +93,14 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold shadow-md transition">
+          <button className="w-full bg-[#c9a84c] hover:bg-[#b8963e] text-white py-3 rounded-xl font-semibold shadow-md transition">
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         <p className="text-center text-gray-600 mt-6">
           Not a user yet?{" "}
-          <Link to="/signup" className="text-blue-600 font-semibold hover:underline">
+          <Link to="/signup" className="text-[#c9a84c] font-semibold hover:underline">
             Create an account
           </Link>
         </p>
