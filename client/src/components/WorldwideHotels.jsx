@@ -50,7 +50,7 @@ export default function WorldwideHotels() {
     <Helmet>
   <title>Worldwide Hotel Booking | Arabian Amenity Travels</title>
   <meta name="description" content="Book luxury, budget, and family hotels worldwide with Arabian Amenity Travels. Best rates guaranteed for individuals, families, and corporate travelers." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/hotelbooking" />
+  <link rel="canonical" href="https://arabianamenity.com/hotelbooking" />
 </Helmet>
     
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">

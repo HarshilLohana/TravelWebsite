@@ -3,7 +3,7 @@
 
   <!-- Home -->
   <url>
-    <loc>https://arabianamenitytravels.com/</loc>
+    <loc>https://arabianamenity.com/</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- About -->
   <url>
-    <loc>https://arabianamenitytravels.com/about</loc>
+    <loc>https://arabianamenity.com/about</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
   <!-- Services -->
   <url>
-    <loc>https://arabianamenitytravels.com/services</loc>
+    <loc>https://arabianamenity.com/services</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,14 +27,14 @@
 
   <!-- Within UAE -->
   <url>
-    <loc>https://arabianamenitytravels.com/rentacar</loc>
+    <loc>https://arabianamenity.com/rentacar</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://arabianamenitytravels.com/cruisebooking</loc>
+    <loc>https://arabianamenity.com/cruisebooking</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -42,28 +42,28 @@
 
   <!-- Outside UAE -->
   <url>
-    <loc>https://arabianamenitytravels.com/visaassistance</loc>
+    <loc>https://arabianamenity.com/visaassistance</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://arabianamenitytravels.com/hotelbooking</loc>
+    <loc>https://arabianamenity.com/hotelbooking</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://arabianamenitytravels.com/travelinsurance</loc>
+    <loc>https://arabianamenity.com/travelinsurance</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://arabianamenitytravels.com/chauffeurservice</loc>
+    <loc>https://arabianamenity.com/chauffeurservice</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -71,7 +71,7 @@
 
   <!-- Corporate Travel -->
   <url>
-    <loc>https://arabianamenitytravels.com/ctravel</loc>
+    <loc>https://arabianamenity.com/ctravel</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -79,7 +79,7 @@
 
   <!-- Reviews -->
   <url>
-    <loc>https://arabianamenitytravels.com/reviews</loc>
+    <loc>https://arabianamenity.com/reviews</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -87,7 +87,7 @@
 
   <!-- Contact -->
   <url>
-    <loc>https://arabianamenitytravels.com/contact</loc>
+    <loc>https://arabianamenity.com/contact</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

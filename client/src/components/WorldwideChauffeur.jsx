@@ -50,7 +50,7 @@ export default function WorldwideChauffeur() {
     <Helmet>
   <title>Worldwide Chauffeur Service | Arabian Amenity Travels</title>
   <meta name="description" content="Premium chauffeur services worldwide with Arabian Amenity Travels. Airport transfers, business chauffeur, and luxury city tours available 24/7." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/chauffeurservice" />
+  <link rel="canonical" href="https://arabianamenity.com/chauffeurservice" />
 </Helmet>
     
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">

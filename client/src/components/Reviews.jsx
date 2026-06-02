@@ -56,7 +56,7 @@ export default function Reviews() {
     <Helmet>
   <title>Customer Reviews | Arabian Amenity Travels</title>
   <meta name="description" content="Read what our customers say about Arabian Amenity Travels. Trusted by 5000+ happy travelers worldwide for premium UAE and global travel experiences." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/reviews" />
+  <link rel="canonical" href="https://arabianamenity.com/reviews" />
 </Helmet>
     
     <div className="font-sans text-stone-800 relative overflow-hidden bg-stone-100">

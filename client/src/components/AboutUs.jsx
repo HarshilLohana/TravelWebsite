@@ -32,7 +32,7 @@ const AboutUs = () => {
     <Helmet>
   <title>About Us | Arabian Amenity Travels</title>
   <meta name="description" content="Learn about Arabian Amenity Travels — a premium UAE travel agency with 10+ years of experience offering global tours, corporate travel, and luxury experiences." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/about" />
+  <link rel="canonical" href="https://arabianamenity.com/about" />
 </Helmet>
     <div className="font-sans bg-stone-100 text-stone-800 overflow-x-hidden">
       {/* --- HERO CAROUSEL --- */}

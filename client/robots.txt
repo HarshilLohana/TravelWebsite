@@ -6,4 +6,4 @@ Disallow: /signup
 Disallow: /dashboard
 Disallow: /admin
 
-Sitemap: https://arabianamenitytravels.com/sitemap.xml
+Sitemap: https://arabianamenity.com/sitemap.xml

@@ -63,7 +63,7 @@ const Services = () => {
     <Helmet>
   <title>Our Services | Arabian Amenity Travels</title>
   <meta name="description" content="Explore all travel services by Arabian Amenity Travels — corporate travel, visa assistance, hotel booking, travel insurance, chauffeur services, and more." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/services" />
+  <link rel="canonical" href="https://arabianamenity.com/services" />
 </Helmet>
     
     <div className="font-sans bg-stone-100 text-stone-800">

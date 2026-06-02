@@ -52,7 +52,7 @@ export default function RentCar() {
     <Helmet>
       <title>Rent a Car in Dubai | Arabian Amenity Travels</title>
       <meta name="description" content="Rent a car in Dubai with Arabian Amenity Travels. Choose from standard, premium, and luxury vehicles with flexible rental options across the UAE." />
-      <link rel="canonical" href="https://arabianamenitytravels.com/rentacar" />
+      <link rel="canonical" href="https://arabianamenity.com/rentacar" />
     </Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* --- HERO SECTION --- */}

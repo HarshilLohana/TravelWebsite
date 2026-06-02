@@ -23,7 +23,7 @@ export default function WorldwideVisa() {
     <Helmet>
   <title>Worldwide Visa Assistance | Arabian Amenity Travels</title>
   <meta name="description" content="Expert visa assistance for 100+ countries from UAE. Arabian Amenity Travels handles tourist visas, documentation support, and global visa processing." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/visaassistance" />
+  <link rel="canonical" href="https://arabianamenity.com/visaassistance" />
 </Helmet>
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
       {/* HERO */}

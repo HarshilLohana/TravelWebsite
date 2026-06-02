@@ -50,7 +50,7 @@ export default function WorldwideInsurance() {
     <Helmet>
   <title>Worldwide Travel Insurance | Arabian Amenity Travels</title>
   <meta name="description" content="Comprehensive travel insurance plans for individuals, families, and corporate travelers from UAE. Get covered for medical emergencies, trip cancellations, and more." />
-  <link rel="canonical" href="https://arabianamenitytravels.com/travelinsurance" />
+  <link rel="canonical" href="https://arabianamenity.com/travelinsurance" />
 </Helmet>
    
     <div className="w-full bg-white text-gray-900 overflow-x-hidden">
