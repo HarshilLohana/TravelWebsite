@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { heroImages } from "../data/constants.js";
 
-// Preload an image by creating a new Image object
-// This tells the browser to download it in the background
-// before it becomes visible — eliminates chunky loading
 function preloadImage(src) {
   const img = new Image();
   img.src = src;
@@ -13,10 +10,10 @@ function preloadImage(src) {
 const HeroSection = () => {
   const heroVideo = "/images/video1.mp4";
   const totalSlides = heroImages.length + 1;
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
-  // Check if mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -24,14 +21,16 @@ const HeroSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Preload ALL hero images immediately on mount
-  // This runs once when the page loads and downloads
-  // all hero images in the background silently
   useEffect(() => {
     heroImages.forEach((src) => preloadImage(src));
-  }, []);
+    if (!isMobile) {
+      const video = document.createElement("video");
+      video.src = heroVideo;
+      video.preload = "auto";
+      video.oncanplaythrough = () => setVideoReady(true);
+    }
+  }, [isMobile]);
 
-  // Auto advance slides
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -39,12 +38,8 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [totalSlides]);
 
-  const isVideo = currentIndex === 0 && !isMobile;
-  const currentImageIndex = isVideo
-    ? null
-    : currentIndex === 0
-    ? 0
-    : currentIndex - 1;
+  const isVideo = currentIndex === 0 && !isMobile && videoReady;
+  const currentImageIndex = isVideo ? null : currentIndex === 0 ? 0 : currentIndex - 1;
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center text-white overflow-hidden">
@@ -53,7 +48,7 @@ const HeroSection = () => {
           {isVideo ? (
             <motion.video
               key="hero-video"
-              preload="none"
+              preload="auto"
               autoPlay
               muted
               loop
@@ -71,7 +66,7 @@ const HeroSection = () => {
               src={heroImages[currentImageIndex]}
               alt="Luxury travel destinations with Arabian Amenity Travels"
               loading="eager"
-              fetchpriority={currentImageIndex === 0 ? "high" : "auto"}
+              fetchpriority="high"
               decoding="async"
               width="1920"
               height="1080"
@@ -83,7 +78,6 @@ const HeroSection = () => {
             />
           )}
         </AnimatePresence>
-
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
       </div>
 
@@ -94,13 +88,11 @@ const HeroSection = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <h1 className="sr-only">
-          Arabian Amenity Travels – Global Tours, UAE Experiences & Corporate Travel Solutions
+          Arabian Amenity Travels - Global Tours, UAE Experiences and Corporate Travel Solutions
         </h1>
-
         <h2 className="text-[clamp(2rem,6vw,4rem)] font-extrabold drop-shadow-xl leading-tight">
           FIND THE PERFECT PLACE TO GO
         </h2>
-
         <p className="mt-4 max-w-2xl mx-auto text-[clamp(1rem,2.5vw,1.25rem)] drop-shadow-md">
           Receive personalized recommendations for activities, hotels, and more
         </p>
