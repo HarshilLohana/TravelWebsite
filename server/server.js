@@ -28,7 +28,8 @@ const ALLOWED_ORIGINS = [
   "http://localhost:4173",
   "https://arabianamenity.com",
   "https://www.arabianamenity.com",
-  "https://arabian-amenity-travels.netlify.app",
+  "http://arabianamenity.com",
+  "http://www.arabianamenity.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean); // removes undefined if FRONTEND_URL is not set
 
