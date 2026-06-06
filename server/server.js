@@ -82,6 +82,9 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", env: process.env.NODE_ENV });
 });
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({ status: "pong" });
+});
 /* ------------------ TEST ROUTE ------------------ */
 app.get("/", (req, res) => {
   res.send("API is running...");
