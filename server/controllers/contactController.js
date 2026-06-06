@@ -38,14 +38,14 @@ export const submitMessage = async (req, res) => {
     }
 
     // ── Step 4: Enforce length limits ────────────────────────────────────────
-    if (name.length < 2) {
-      return res.status(400).json({ error: "Name must be at least 2 characters." });
+    if (name.length < 1) {
+      return res.status(400).json({ error: "Name must be at least 1 characters." });
     }
     if (name.length > 100) {
       return res.status(400).json({ error: "Name must be under 100 characters." });
     }
-    if (message.length < 10) {
-      return res.status(400).json({ error: "Message must be at least 10 characters." });
+    if (message.length < 2) {
+      return res.status(400).json({ error: "Message must be at least 2 characters." });
     }
     if (message.length > 2000) {
       return res.status(400).json({ error: "Message must be under 2000 characters." });
