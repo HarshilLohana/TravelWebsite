@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Header } from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
-
+import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
 import RentCar from "./components/RentCar";
@@ -53,6 +54,7 @@ function MainLayout() {
 
   return (
     <>
+    <ScrollToTop />
       {!hideLayout && <Header />}
 
       <AnimatePresence mode="wait">
@@ -70,7 +72,7 @@ function MainLayout() {
           <Route path="/ctravel" element={<PageWrapper><CorporateTravel /></PageWrapper>} />
           <Route path="/reviews" element={<PageWrapper><Reviews /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactUs /></PageWrapper>} />
-
+          <Route path="*" element={<NotFound />} />
           {/* ── Auth Routes ── */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

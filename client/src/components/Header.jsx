@@ -48,14 +48,16 @@ export const Header = () => {
     localStorage.clear();
     navigate("/login");
   };
-
+  // Pages with light backgrounds need a solid header immediately
+  const lightPages = ["/dashboard", "/admin"];
+  const needsSolidHeader = lightPages.includes(location.pathname);
   if (loadingUser) return null;
 
   return (
     <>
       <h1 className="sr-only">Arabian Amenity Travels - Global Tours, Corporate Travel and Luxury Experiences</h1>
 
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#0a0d1a]/95 shadow-lg backdrop-blur" : "bg-transparent"}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled || needsSolidHeader ? "bg-[#0a0d1a]/95 shadow-lg backdrop-blur" : "bg-transparent"}`}>
         <div className="container mx-auto flex justify-between items-center px-6 py-3">
 
           <Link to="/">
