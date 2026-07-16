@@ -83,9 +83,15 @@ const Footer = () => {
         </div>
       </div>
       <div className="h-px bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent mx-6" />
-      <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-gray-500">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Arabian Amenity Travels. All rights reserved.</p>
-        <p className="text-xs">Crafting Experiences Beyond Journeys</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
+          <Link to="/refund-policy" className="hover:text-[#c9a84c] transition-colors">Refund Policy</Link>
+          <span className="text-gray-700">|</span>
+          <Link to="/terms-conditions" className="hover:text-[#c9a84c] transition-colors">Terms & Conditions</Link>
+          <span className="text-gray-700">|</span>
+          <Link to="/privacy-policy" className="hover:text-[#c9a84c] transition-colors">Privacy Policy</Link>
+        </div>
       </div>
     </footer>
   );

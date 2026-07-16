@@ -125,6 +125,12 @@ const Signup = () => {
             >
               {loading ? "Creating account..." : "Sign Up"}
             </button>
+            <p className="text-center text-gray-400 text-xs mt-3">
+              By creating an account, you agree to our{" "}
+              <Link to="/terms-conditions" className="text-[#c9a84c] hover:underline">Terms & Conditions</Link>{" "}
+              and{" "}
+              <Link to="/privacy-policy" className="text-[#c9a84c] hover:underline">Privacy Policy</Link>.
+            </p>
           </form>
 
           <p className="text-center text-gray-600 mt-6">

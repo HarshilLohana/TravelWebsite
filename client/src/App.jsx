@@ -26,6 +26,9 @@ import Signup from "./components/Signup";
 import SplashScreen from "./components/SplashScreen";
 import Dashboard from "./components/Dashboard";
 import AdminDashboard from "./components/AdminDashboard";
+import RefundPolicy from "./components/RefundPolicy";
+import TermsConditions from "./components/TermsAndConditions";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 // Page transition
 const variants = {
@@ -72,6 +75,9 @@ function MainLayout() {
           <Route path="/ctravel" element={<PageWrapper><CorporateTravel /></PageWrapper>} />
           <Route path="/reviews" element={<PageWrapper><Reviews /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactUs /></PageWrapper>} />
+          <Route path="/refund-policy" element={<PageWrapper><RefundPolicy /></PageWrapper>} />
+          <Route path="/terms-conditions" element={<PageWrapper><TermsConditions /></PageWrapper>} />
+          <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
           <Route path="*" element={<NotFound />} />
           {/* ── Auth Routes ── */}
           <Route path="/login" element={<Login />} />
